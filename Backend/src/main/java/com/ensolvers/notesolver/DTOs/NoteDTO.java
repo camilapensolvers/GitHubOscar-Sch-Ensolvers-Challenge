@@ -27,7 +27,7 @@ public class NoteDTO {
         this.id = note.getId();
         this.title = note.getTitle();
         this.content = note.getContent();
-        if (Objects.nonNull(tagList)) {
+        if (Objects.nonNull(note.getTagList())) {
             this.tagList = note.getTagList().stream().map(TagDTO::new).collect(Collectors.toSet());
         }
         this.isArchived = note.getArchived();
