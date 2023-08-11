@@ -7,6 +7,7 @@ import com.ensolvers.notesolver.Models.Tag;
 import com.ensolvers.notesolver.Repositories.NoteRepository;
 import com.ensolvers.notesolver.Repositories.TagRepository;
 import com.ensolvers.notesolver.Services.NoteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class NoteServiceImpl implements NoteService {
     private final NoteRepository noteRepository;
     private final TagRepository tagRepository;
+    @Autowired
     public NoteServiceImpl(NoteRepository noteRepository,
                                      TagRepository tagRepository){
         this.noteRepository = noteRepository;
@@ -63,10 +65,14 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public void updateNote(Integer noteId, NoteDTO noteDTO) {
         Note note = noteRepository.findById(noteId).get();
-
         note.setTitle(noteDTO.getTitle());
         note.setContent(noteDTO.getContent());
-        note.setTagList(checkForPersistedDuplicates(noteDTO));
+
+        Set<Tag> set = checkForPersistedDuplicates(noteDTO);
+        for (Tag tag : set){
+            tagRepository.save(tag);
+        }
+        note.setTagList(set);
         noteRepository.save(note);
     }
 
@@ -95,12 +101,15 @@ public class NoteServiceImpl implements NoteService {
         //any duplicated for a new DTO matching it persisted replica
         Set<TagDTO> uniqueTagsList = new HashSet<>();
         for (TagDTO tagDTO : noteDTO.getTagList()){
-            Tag persistedTag = tagRepository.findByName(tagDTO.getName());
-            if (Objects.nonNull(persistedTag)){
-                uniqueTagsList.add(new TagDTO(persistedTag));
-            }else{
-                uniqueTagsList.add(tagDTO);
+            if (uniqueTagsList.stream().noneMatch(tag-> tag.getName().equalsIgnoreCase(tagDTO.getName()))){
+                Tag persistedTag = tagRepository.findByName(tagDTO.getName());
+                if (Objects.nonNull(persistedTag)){
+                    uniqueTagsList.add(new TagDTO(persistedTag));
+                }else{
+                    uniqueTagsList.add(tagDTO);
+                }
             }
+
         }
         //In the second part of the algorithm, while converting the DTO Set to a proper
         //Entity Set, it checks if the DTO matches an object persisted in the database,
