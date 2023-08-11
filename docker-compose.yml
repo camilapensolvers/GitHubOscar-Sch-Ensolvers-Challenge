@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./Backend/
+    ports:
+      - "8080:8080"
+    networks:
+      - serverNetwork
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/notesolver_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  frontend:
+    build:
+      context: ./Frontend/
+    ports:
+      - "80:80"
+  database:
+    image: postgres:latest
+    container_name: notesolver_db
+    environment:
+      POSTGRES_DB: notesolver_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432" # Map container port to host port if you want to access the database directly
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - serverNetwork
+networks:
+  serverNetwork:
+    driver: bridge
+
+volumes:
+  pgdata:
