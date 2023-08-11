@@ -1,89 +1,110 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+*,*::before,*::after{
+  padding: 0;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+:root{
+  --bg-color: wheat;
+  --main-text-color: black;
+  --secondary-text-color: white;
+  --note-color-0: #ffffb5;
+  --note-color-1: #ffaea5;
+  --note-color-2: #cbaacb;
+  --note-color-3: #abdee6;
+  --note-color-4: #f380c3;
+  --note-color-5: #cce2cb;
+  --page-title: 'Fontdiner Swanky', cursive;
+  --note-title: 'Joti One', cursive;
+  --note-content: 'Comic Neue', cursive;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.note-color-0{
+  background:linear-gradient(-45deg, #7778 -20%, var(--note-color-0), #ddd8 120%), linear-gradient(var(--note-color-0),var(--note-color-0));
+  box-shadow: 1rem 1rem 1rem #0005,
+  0rem 0rem 0rem 3px #0003 inset;
+}
+.note-color-1{
+  background:linear-gradient(-45deg, #7778 -20%, var(--note-color-1), #ddd8 120%), linear-gradient(var(--note-color-1),var(--note-color-1));
+  box-shadow: 1rem 1rem 1rem #0005,
+  0rem 0rem 0rem 3px #0003 inset;
+}
+.note-color-2{
+  background:linear-gradient(-45deg, #7778 -20%, var(--note-color-2), #ddd8 120%), linear-gradient(var(--note-color-2),var(--note-color-2));
+  box-shadow: 1rem 1rem 1rem #0005,
+  0rem 0rem 0rem 3px #0003 inset;
+}
+.note-color-3{
+  background:linear-gradient(-45deg, #7778 -20%, var(--note-color-3), #ddd8 120%), linear-gradient(var(--note-color-3),var(--note-color-3));
+  box-shadow: 1rem 1rem 1rem #0005,
+  0rem 0rem 0rem 3px #0003 inset;
+}
+.note-color-4{
+  background:linear-gradient(-45deg, #7778 -20%, var(--note-color-4), #ddd8 120%), linear-gradient(var(--note-color-4),var(--note-color-4));
+  box-shadow: 1rem 1rem 1rem #0005,
+  0rem 0rem 0rem 3px #0003 inset;
+}
+.note-color-5{
+  background:linear-gradient(-45deg, #7778 -20%, var(--note-color-5), #ddd8 120%), linear-gradient(var(--note-color-5),var(--note-color-5));
+  box-shadow: 1rem 1rem 1rem #0005,
+  0rem 0rem 0rem 3px #0003 inset;
+}
+body{
+  background-color: blanchedalmond;
+}
+h1{
+  font-family: var(--page-title);
+  font-size: 3rem;
+}
+h4,h5,.span-highlight{
+  font-family: var(--note-title);
+}
+p{
+  font-family: var(--note-content);
+  font-size: 1.1rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+.btn{
+  text-transform: uppercase;
+  font-family: var(--note-title);
+  box-shadow: .2em .2em black;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.button-primary{
+  background-color: rgb(141, 190, 255);
+  border: 3px solid #0005;
+  color: black;
+  font-weight: bolder;
 }
+.button-primary:hover{
+  background-color: rgb(190, 218, 254);
 
-.card {
-  padding: 2em;
 }
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.button-secondary{
+  background-color: rgb(163, 180, 202);
+  border: 3px solid #0005;
+  color: black;
+  font-weight: bolder;
 }
+.button-secondary:hover{
+  background-color: rgb(204, 207, 210);
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+.button-danger{
+  background-color: rgb(247, 162, 50);
+  border: 3px solid #0005;
+  color: black;
+  font-weight: bolder;
+}
+.button-danger:hover{
+  background-color: rgb(255, 186, 95);
+
+}
+.button-add{
+  background-color: rgb(90, 223, 130);
+  border: 3px solid #0005;
+  color: black;
+  font-weight: bolder;
+}
+.button-add:hover{
+  background-color: rgb(158, 220, 176);
+
 }
