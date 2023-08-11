@@ -1,39 +1,81 @@
-<script setup>
-import { RouterView } from 'vue-router';
-import { activeNote } from './globals/activeNote';
-import { noteList } from './globals/noteList';
-import {ref} from "vue";
+<script>
+import { activeNote } from "../globals/activeNote";
+import { noteList } from "../globals/noteList";
+import { tagList } from "../globals/tagList"
+import NotesContainer from "../components/NotesContainer.vue"
+import Navbar from "../components/Navbar.vue"
 
-
-let tagToAdd = "";
-
-function handleAddTag(){
-    if (tagToAdd.trim()!="" && 
-        !activeNote.note.tagList.some(tag => tag.name.trim().toLowerCase()===tagToAdd.trim().toLowerCase())){
-            activeNote.note.tagList = [...activeNote.note.tagList,{name : tagToAdd}]
+export default{
+    components:{
+        NotesContainer,
+        Navbar
+    },
+    data(){
+        return{
+            noteList,
+            activeNote,
+            tagList,
+            tagToAdd:"",
+            selectedTag:"",
         }
-    tagToAdd="";
-}
-function handleRemoveTag(name){
-    let tagIndex = activeNote.note.tagList.findIndex(tag=>tag.name == name);
-    if (tagIndex != -1) {
-        activeNote.note.tagList.splice(tagIndex,1);
+    },
+    mounted(){
+        noteList.fetchActive();
+    },
+    methods:{
+        handleAddTag(){
+            if (this.tagToAdd.trim()!="" && 
+                !this.activeNote.note.tagList.some(tag => tag.name.trim().toLowerCase()===this.tagToAdd.trim().toLowerCase())){
+                    this.activeNote.note.tagList = [...this.activeNote.note.tagList,{name : this.tagToAdd}]
+                }
+            this.tagToAdd="";
+        },
+        handleRemoveTag(name){
+            let tagIndex = this.activeNote.note.tagList.findIndex(tag=>tag.name == name);
+            if (tagIndex != -1) {
+                this.activeNote.note.tagList.splice(tagIndex,1);
+            }
+        },
+        handleCreateNote(){
+            this.activeNote.note = {
+                name : "",
+                content : "",
+                tagList : []   
+            }
+        }
     }
 }
-
-
 </script>
 
 <template>
-  <RouterView/>
+    <header>
+        <Navbar />
+    </header>
+    <main class="d-flex flex-column justify-content-center align-items-center">
+        <h1>My Notes</h1>
+        <div class="create-filter-container d-flex flex-wrap justify-content-around align-items-center">
+            <button class="btn button-primary" @click="handleCreateNote" data-toggle="modal" data-target="#editNoteModal">Create</button>
+            <label class="d-flex flex-wrap align-items-center justify-content-center category-filter-label">
+                <h4>Filter by Category</h4>
+                <select name="tagFilter" v-model="selectedTag">
+                    <option disabled value="">Select a category</option>
+                    <option value="">All</option>
+                    <template v-if="tagList.list.length" v-for="(tag,index) in tagList.list">
+                        <option :value="tag.name">{{ tag.name }}</option>
+                    </template>
+                </select>
+            </label>
+        </div>
+        <template v-if="noteList.list.length">
+            <NotesContainer :selectedTag="selectedTag"/>
+        </template>
+    </main>
+    <footer>
+    </footer>
+        <!-- --------------------MODALS------------------ -->
 
-
-
-
-
-
-
-  <div class="modal fade" id="archiveConfirmModal" tabindex="-1" role="dialog" aria-labelledby="archiveConfirmModalTitle" aria-hidden="true">
+    <!-- DELETING -->
+    <!-- <div class="modal fade" id="archiveConfirmModal" tabindex="-1" role="dialog" aria-labelledby="archiveConfirmModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div :class="'modal-content '+`note-color-${activeNote.index%6}`">
             <div class="modal-header">
@@ -51,12 +93,9 @@ function handleRemoveTag(name){
             </div>
             </div>
         </div>
-    </div>
-
-
-
-
-    <div v-if="activeNote.note" class="modal fade" id="editNoteModal" tabindex="-1" role="dialog" aria-labelledby="editNoteModalTitle" aria-hidden="true">
+    </div> -->
+    <!-- EDITING -->
+    <!-- <div v-if="activeNote.note" class="modal fade" id="editNoteModal" tabindex="-1" role="dialog" aria-labelledby="editNoteModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div :class="'modal-content '+`note-color-${activeNote.index%6}`">
             <div class="modal-header">
@@ -106,11 +145,41 @@ function handleRemoveTag(name){
             </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <!-- ------------------------------------------------------------------ -->
 </template>
 
 <style scoped>
-    .modal-header{
+    main{
+        gap: 3rem;
+        padding: 2rem 0;
+        width: 100%;
+        --note-title: 'Joti One', cursive;
+        --note-content: 'Comic Neue', cursive;
+    }
+    .create-filter-container{
+        width: 80%;
+        gap: 3rem;
+    }
+    .category-filter-label{
+        /* width: 50%; */
+        gap: 1rem;
+    }
+    .category-filter-label h4{
+        margin: 0;
+        white-space: nowrap;
+    }
+    select{
+        border: 3px solid #0008;
+        padding: .3em .5em;
+        font-size: 1.3rem;
+        font-family: var(--note-content);
+        font-weight: bolder;
+        background: #f79f9f;
+        cursor: pointer;
+        /* color: #ddd; */
+    }
+    /* .modal-header{
         border: none;
     }
     .modal-title{
@@ -204,5 +273,5 @@ function handleRemoveTag(name){
     }
     .modal-footer{
         border: none;
-    }
+    } */
 </style>

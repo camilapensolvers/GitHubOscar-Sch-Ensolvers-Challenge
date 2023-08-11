@@ -3,33 +3,20 @@ import axios from "axios";
 export default{
     data (){
         return{
-            info: "asdasdasdasd"
+            
         }
     },
-    mounted(){
-        this.loadData();
-    },
-    methods:{
-        loadData(){
-            axios.get("http://localhost:8080/note/all")
-            .then(res =>{
-                this.info = res.data;
-            });
-        }
-    }
 }
 </script>
 
 <template>
-    <header class="d-flex">
+    <header class="note-color-2">
         <section class="hero-section d-flex flex-column justify-content-around align-items-center">
-            <h1>Wellcome to EasyNotes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, vero incidunt deleniti cum modi dolorum? Tenetur deserunt ullam excepturi deleniti, suscipit, blanditiis a tempora vel placeat sunt incidunt? Incidunt, inventore.</p>
-            <button><router-link to="/myNotes">My Notes</router-link></button>
-        </section>
-        <section class="hero-image">
-            <img src="" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, aliquid molestiae tempore atque est earum quaerat? Reprehenderit exercitationem dolor quisquam debitis aut sunt labore nisi et, quaerat neque ipsam molestias.</p>
+            <img src="../assets/Nsolver-logo.png" alt="Page Logo">
+            <div class="p-section">
+                <p>Unleash Your Creativity with <span>NoteSolver</span></p>
+            </div>
+            <router-link to="/myNotes"><button class="btn button-primary">Sign Up</button></router-link>
         </section>
     </header>
     <main>
@@ -44,15 +31,34 @@ export default{
 <style scoped>
     header{
         padding: 2rem;
-        background-color: #ccc;
         min-height: 60vh;
+        width: 100%;
+        box-shadow: 0rem 1rem 1rem #0005,
+        0rem 0rem 0rem 3px #0003 inset;
+    }
+    img{
         width: 100%;
     }
     .hero-section{
-        width: 60%;
-        flex-shrink: 0;
+        width: 100%;
+        gap: 1rem;
+        margin: 0 auto;
+        max-width: 1000px;
     }
-    .hero-section h1{
-        font-size: 4rem;
+    .p-section{
+        padding: 1em;
+    }
+    .p-section p{
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0;
+        border-bottom: 3px dashed black;
+    }
+    span{
+        font-family: 'Joti One', cursive;
+    }
+    button{
+        font-size: 3rem;
     }
 </style>
