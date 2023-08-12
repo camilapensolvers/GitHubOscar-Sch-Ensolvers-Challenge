@@ -1,0 +1,16 @@
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Repositories\NoteRepository.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Config\WebConfig.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Services\Impl\NoteServiceImpl.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Controllers\TagController.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\DTOs\TagDTO.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Services\NoteService.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Services\TagService.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Controllers\NoteController.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Config\SwaggerConfig.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Common\ApiResponse.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Models\Tag.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Services\Impl\TagServiceImpl.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Models\Note.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\DTOs\NoteDTO.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\NotesolverApplication.java
+D:\Programacion\Desafio-Ensolvers\GitHubOscar-Sch-Ensolvers-Challenge\Backend\src\main\java\com\ensolvers\notesolver\Repositories\TagRepository.java
