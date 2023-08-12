@@ -34,7 +34,7 @@ This App was contructed using:
 	-Docker 24.0.5
 	-PostgreSQL
 
-If you want to run the backend on development, like using maven plugin spring-boor.run, make sure to comment the postgre lines and uncomment the H2 ones. This is due that the Database its created and deployed by Docker. By using the H2 database instead you will be capable of running the project perfectly.
+If you want to run the backend on development, like using maven plugin spring-boor.run, make sure to comment the postgre lines in **application.properties** and uncomment the H2 ones. This is due that the Database its created and deployed by Docker. By using the H2 database instead you will be capable of running the project perfectly.
 
 
 #### Disclaimer
