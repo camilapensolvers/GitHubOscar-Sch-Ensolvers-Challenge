@@ -20,8 +20,7 @@ export default{
         </section>
     </header>
     <main>
-        <h2>Esto es home</h2>
-        <pre>{{ info }}</pre>
+        <img class="under-construction" src="../assets/pngwing.com.png" alt="under construction">
     </main>
     <footer>
 
@@ -29,12 +28,21 @@ export default{
 </template>
 
 <style scoped>
+    main{
+        display: flex;
+        justify-content: center;
+        padding: 3rem;
+    }
     header{
         padding: 2rem;
         min-height: 60vh;
         width: 100%;
         box-shadow: 0rem 1rem 1rem #0005,
         0rem 0rem 0rem 3px #0003 inset;
+    }
+    .under-construction{
+        width: 30%;
+        filter:drop-shadow(-.2rem -.2rem 0rem black) drop-shadow(.2rem .2rem 0rem black) drop-shadow(-.2rem .2rem 0rem black) drop-shadow(.2rem -.2rem 0rem black) drop-shadow(1rem 1rem 1.5rem #0008);
     }
     img{
         width: 100%;
