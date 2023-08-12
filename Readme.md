@@ -20,6 +20,26 @@ If you face any problem running this files, you can simply code this in any term
 
 		`./docker-compose up`
 
+Once you got everything deployed, you can access the web by entering to:
+
+		http://localhost:80/
+
+and to access the swagger UI you can go to:
+
+		http://localhost:8080/swagger-ui.html
+
+Also, if you want to see the postgre database you can add a new server on your pgAdmin with the following credentials:
+
+		Host: localhost,
+		Port: 5432,
+		Database name: notesolver_db,
+		User: user,
+		Password: 1234
+
+To finalize, if you want to test the API by Postman or any software like that, you will need to send the requests to the following URL:
+
+		http://localhost:8080/yor-request
+
 #### Specifications
 
 This App was contructed using:
